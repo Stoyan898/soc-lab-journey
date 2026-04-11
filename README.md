@@ -1,45 +1,57 @@
-# SOC Lab Journey 🛡️
+# 🔐 Splunk SIEM Lab – Brute Force Detection
 
-After passing CompTIA Security+, I built a home SOC lab to gain hands-on experience and develop real-world cybersecurity skills.
-
-## 🔧 Lab Setup
-- Oracle VirtualBox
-- Windows 11 VM (endpoint simulation)
-- Ubuntu VM (analysis environment)
-- Internal network configuration
-
-## 🧪 What I Did
-
-### VirtualBox Setup
-- Created virtual machines for Windows and Ubuntu
-- Allocated RAM, CPU, and storage
-- Installed Guest Additions for better performance
-
-### Network Configuration
-- Configured both machines on the same network
-- Verified connectivity using ping
-
-## 📸 Proof
-
-### VirtualBox Environment
-![VirtualBox](01-virtualbox-setup/01-virtualbox-setup.png)
-
-### Network Connectivity Test
-![Network](06-network-config/06-network-connectivity-test.png)
-
-## 💡 What I Learned
-- How to build and manage virtual environments
-- Basic Linux commands and navigation
-- Troubleshooting installation and configuration issues
-- How systems communicate over a network (IP, ping, interfaces)
-
-## 🎯 Next Steps
-- Learn SIEM tools (Splunk, etc.)
-- Practice log analysis
-- Simulate attacks and detect them
-- Build incident response scenarios
-
-## 🚀 Goal
-To become a SOC Analyst and continue building hands-on cybersecurity experience.
+## 📌 Overview
+This project demonstrates a SIEM lab built using Splunk to monitor Windows logs and detect brute force login attempts.
 
 ---
+
+## 🏗️ Lab Setup
+
+- Windows 11 (Log Source)
+- Splunk Universal Forwarder
+- Splunk Enterprise (Ubuntu)
+
+---
+
+## 📊 Data Ingestion
+
+![Data](images/03-index-main-data.png)
+
+---
+
+## 🔍 Detection Queries
+
+### Successful Logins (4624)
+![4624](images/04-eventcode-4624.png)
+
+### Failed Logins (4625)
+![4625](images/05-eventcode-4625.png)
+
+---
+
+## 📈 Analysis
+
+### Table View
+![Table](images/06-login-table.png)
+
+### Brute Force Detection
+![Stats](images/07-bruteforce-stats.png)
+
+---
+
+## 🚨 Alert Configuration
+
+![Alert](images/08-bruteforce-alert.png)
+
+---
+
+## 🧠 MITRE ATT&CK Mapping
+
+| Event | Technique | Description |
+|------|----------|------------|
+| 4624 | T1078 | Valid Accounts |
+| 4625 | T1110 | Brute Force |
+
+---
+
+## 🚨 Detection Logic
