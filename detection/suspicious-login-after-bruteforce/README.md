@@ -1,9 +1,8 @@
-
 # 🔍 Detection: Suspicious Login After Multiple Failed Attempts
 
 ## 📌 Description
 
-This detection identifies accounts that experience multiple failed login attempts (EventCode 4625) followed by successful authentication (EventCode 4624).
+This detection identifies accounts with multiple failed login attempts followed by a successful login.
 
 This behavior may indicate:
 
@@ -12,11 +11,11 @@ This behavior may indicate:
 
 ---
 
-## 🧪 Lab Setup
+## 🛠️ Lab Setup
 
 * Splunk Enterprise (Ubuntu)
-* Universal Forwarder (Windows)
-* Windows Event Logs ingested (Security logs)
+* Windows machine with Universal Forwarder
+* Windows Security Event Logs
 
 ---
 
@@ -34,10 +33,10 @@ index=main (EventCode=4624 OR EventCode=4625)
 
 ## 📊 Findings
 
-| Account          | Source IP | Failed Attempts | Successful Logins |
-| ---------------- | --------- | --------------- | ----------------- |
-| soc101           | 127.0.0.1 | 10              | 8                 |
-| DESKTOP-TS6Q8M2$ | 127.0.0.1 | 10              | 8                 |
+* Account: soc101
+* Source IP: 127.0.0.1
+* Failed attempts: 10
+* Successful logins: 8
 
 ---
 
@@ -57,17 +56,12 @@ index=main (EventCode=4624 OR EventCode=4625)
 
 ## 🚨 Conclusion
 
-This activity is suspicious and may indicate:
-
-* Account compromise
-* Weak password policy
-* Automated attack tools
+This activity is suspicious and may indicate account compromise.
 
 ---
 
 ## 🔧 Recommendations
 
-* Enforce account lockout policies
-* Enable MFA
+* Implement account lockout policies
+* Enable multi-factor authentication
 * Monitor repeated login failures
-* Alert on this detection in real environments
