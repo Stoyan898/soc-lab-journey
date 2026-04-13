@@ -1,0 +1,12 @@
+# Failed logins
+index=main EventCode=4625
+
+# Successful logins
+index=main EventCode=4624
+
+# Combined analysis
+index=main (EventCode=4624 OR EventCode=4625)
+| stats count(eval(EventCode=4625)) as failed 
+       count(eval(EventCode=4624)) as success 
+       by Account_Name Source_Network_Address
+| where failed > 5 AND success > 0
