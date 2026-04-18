@@ -133,6 +133,7 @@ I am passionate about cybersecurity and continuously learning to become a SOC An
 ## 📈 Future Improvements
 
 * Reduce false positives
+* Lateral Movement Detection(Event ID 4624 Logon Type 3)
 * Add detections for PowerShell abuse and persistence
 * Map detections to MITRE ATT&CK framework
 * Build dashboards for visualization
