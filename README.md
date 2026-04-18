@@ -135,6 +135,7 @@ I am passionate about cybersecurity and continuously learning to become a SOC An
 * Reduce false positives
 * Lateral Movement Detection(Event ID 4624 Logon Type 3)
 * Add detections for PowerShell abuse and persistence
+* Phishing / email log analysis (basic)
 * Map detections to MITRE ATT&CK framework
 * Build dashboards for visualization
 
