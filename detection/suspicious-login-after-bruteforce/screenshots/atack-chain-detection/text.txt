@@ -20,3 +20,21 @@ index=* (EventCode=4625 OR EventCode=4672)
         by user, host
 | eval time_diff = last_seen - first_seen
 | where failed_logins >= 3 AND privilege_events >= 1 AND time_diff <= 86400
+
+---
+
+# 📊 6) dashboards/brute-force-priv-esc-dashboard.md
+
+```markdown
+# Dashboard: Brute Force → Privilege Escalation
+
+## Panels Created
+1. Failed logins over time
+2. Privilege escalation events by user
+3. Correlation detection results
+
+## Purpose
+To visually monitor suspicious authentication patterns and privilege escalation activity.
+
+## Outcome
+Provides a real-time overview of potential attack chains.
