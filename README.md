@@ -119,6 +119,15 @@ I wanted to learn how SOC analysts detect multi-stage attacks instead of single 
 - T1078 – Valid Accounts
 - T1068 – Privilege Escalation
 
+  ## 🧠 SOC Workflow Demonstrated
+
+1. Log ingestion from Windows machine
+2. Detection engineering using Splunk SPL
+3. Correlation of multiple events (4625 + 4672)
+4. Alert creation and monitoring
+5. Visualization using dashboards
+6. Validation through attack simulation
+
 ### My Goal
 I am passionate about cybersecurity and continuously learning to become a SOC Analyst.
 ## 📈 Future Improvements
