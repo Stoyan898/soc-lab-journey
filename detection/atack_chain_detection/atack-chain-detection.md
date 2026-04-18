@@ -32,3 +32,9 @@ index=* (EventCode=4625 OR EventCode=4672)
         by user, host
 | eval time_diff = last_seen - first_seen
 | where failed_logins >= 3 AND privilege_events >= 1 AND time_diff <= 86400
+
+## 🛡️ MITRE ATT&CK Mapping
+
+- T1110 – Brute Force
+- T1078 – Valid Accounts
+- T1068 – Privilege Escalation
