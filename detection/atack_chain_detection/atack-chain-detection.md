@@ -21,3 +21,17 @@ Successfully detected a suspicious attack chain involving:
 - T1110 – Brute Force
 - T1078 – Valid Accounts
 - T1068 – Privilege Escalation
+
+## 🔎 Analysis
+
+This pattern indicates a possible brute-force attack followed by account compromise.
+
+Multiple failed login attempts suggest password guessing, while the subsequent privilege escalation indicates potential attacker success.
+
+This detection helps identify early-stage compromise before lateral movement.
+
+## 🧠 Real-World Relevance
+
+This detection simulates a real SOC scenario where attackers attempt to gain access through brute force and escalate privileges.
+
+Such patterns are commonly monitored in enterprise environments.
