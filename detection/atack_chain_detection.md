@@ -1,21 +1,24 @@
-# Attack Chain Detection: Brute Force → Privilege Escalation
+# 🚨 Attack Chain Detection: Brute Force → Privilege Escalation
 
 ## Overview
-This detection identifies suspicious behavior where multiple failed login attempts are followed by privilege escalation activity.
+This detection identifies suspicious behavior where multiple failed login attempts are followed by privilege escalation.
 
-## Data Source
-- Windows Security Logs (Splunk)
-- Event ID 4625 – Failed login
-- Event ID 4672 – Special privileges assigned
+---
+
+## Data Sources
+- Windows Security Logs
+- Event ID 4625 → Failed Login
+- Event ID 4672 → Privileged Access
+
+---
 
 ## Detection Logic
-- Count failed login attempts per user
-- Count privilege escalation events per user
-- Calculate time difference between first and last event
-- Trigger if:
-  - Failed logins ≥ 3
-  - Privilege events ≥ 1
-  - Occurs within defined time window
+- Group events by user and host
+- Count failed logins
+- Count privilege escalation events
+- Calculate time difference between events
+
+---
 
 ## SPL Query
 ```spl
