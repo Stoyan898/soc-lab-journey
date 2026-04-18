@@ -92,10 +92,38 @@ I enjoy learning by building real-world labs and solving practical problems.
 I am highly motivated, eager to learn, and committed to growing into a SOC Analyst role.
 
 ---
+## 🔐 Attack Chain Detection (Brute Force → Privilege Escalation)
 
+In this project, I developed a correlation rule in Splunk to detect a potential attack chain involving:
+
+- Multiple failed login attempts (Event ID 4625)
+- Followed by privilege escalation (Event ID 4672)
+
+### What I Did
+- Collected and analyzed Windows Security logs
+- Built a correlation detection using SPL
+- Applied thresholds and time-based logic
+- Created a dashboard for visualization
+- Configured an alert for real-time detection
+
+### Why I Did It
+I wanted to understand how real SOC analysts detect multi-stage attacks rather than isolated events. This project helped me learn how to correlate logs and identify suspicious patterns.
+
+### What I Learned
+- Event correlation in SIEM
+- Detection engineering basics
+- MITRE ATT&CK mapping
+- Alert creation and tuning
+
+### My Motivation
+I am passionate about cybersecurity and continuously learning. I enjoy building hands-on labs and improving my detection skills to prepare for a SOC Analyst role.
+
+### MITRE ATT&CK
+- T1110 – Brute Force
+- T1078 – Valid Accounts
+- T1068 – Privilege Escalation
 ## 📈 Future Improvements
 
-* Correlate multiple events (attack chain detection)
 * Reduce false positives
 * Add detections for PowerShell abuse and persistence
 * Map detections to MITRE ATT&CK framework
