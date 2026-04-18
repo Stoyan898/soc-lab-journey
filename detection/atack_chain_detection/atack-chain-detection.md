@@ -1,37 +1,20 @@
+# 🛡️ SOC Lab – Attack Chain Detection (Splunk)
 
-# 🚨 Attack Chain Detection: Brute Force → Privilege Escalation
+This project demonstrates a real-world SOC detection use case where a brute-force attack is followed by privilege escalation.
 
-## Overview
-This detection identifies suspicious behavior where multiple failed login attempts are followed by privilege escalation.
+I built a correlation rule in Splunk to identify multi-stage attack behavior using Windows Security logs.
 
----
+## 🔍 Detection Summary
+- Event ID 4625 → Failed login attempts
+- Event ID 4672 → Privileged access
+- Correlation based on user and host
+- Time-based detection logic applied
 
-## Data Sources
-- Windows Security Logs
-- Event ID 4625 → Failed Login
-- Event ID 4672 → Privileged Access
-
----
-
-## Detection Logic
-- Group events by user and host
-- Count failed logins
-- Count privilege escalation events
-- Calculate time difference between events
-
----
-
-## SPL Query
-```spl
-index=* (EventCode=4625 OR EventCode=4672)
-| eval user=Account_Name
-| stats count(eval(EventCode=4625)) as failed_logins 
-        count(eval(EventCode=4672)) as privilege_events 
-        min(_time) as first_seen 
-        max(_time) as last_seen 
-        by user, host
-| eval time_diff = last_seen - first_seen
-| where failed_logins >= 3 AND privilege_events >= 1 AND time_diff <= 86400
+## 🎯 Outcome
+Successfully detected a suspicious attack chain involving:
+- Multiple failed logins
+- Followed by privilege escalation
+- Within a defined time window
 
 ## 🛡️ MITRE ATT&CK Mapping
 
