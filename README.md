@@ -128,11 +128,18 @@ I wanted to learn how SOC analysts detect multi-stage attacks instead of single 
 5. Visualization using dashboards
 6. Validation through attack simulation
 
+## 🔧 False Positive Reduction
+
+Improved detection accuracy by:
+- Filtering known safe users
+- Applying time-based correlation
+- Increasing thresholds
+📂 See full details: [false-positive-reduction.md](detections/false-positive-reduction.md)
+
 ### My Goal
 I am passionate about cybersecurity and continuously learning to become a SOC Analyst.
 ## 📈 Future Improvements
 
-* Reduce false positives
 * Lateral Movement Detection(Event ID 4624 Logon Type 3)
 * Add detections for PowerShell abuse and persistence
 * Phishing / email log analysis (basic)
