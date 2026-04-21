@@ -2,15 +2,11 @@
 
 ## 📌 Overview
 
-This repository documents my hands-on journey in building a Security Operations Center (SOC) home lab using Splunk.
-
-The purpose of this lab is to simulate real-world SOC analyst responsibilities such as:
-
-* Log ingestion and monitoring
-* Detection engineering
-* Alert creation and tuning
-* Attack simulation and validation
-
+- Overview of the lab
+- Architecture (diagram)
+- Use cases (brute force detection, failed logins)
+- Sample queries (Splunk SPL)
+- MITRE ATT&CK mapping
 ---
 
 ## 🧰 Technologies Used
