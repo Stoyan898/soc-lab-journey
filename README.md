@@ -35,8 +35,11 @@
 
 ### 🔹 Privilege Escalation Detection
 
-* Event ID: 4672
-* Detects when special privileges (admin rights) are assigned
+🔹 Privilege Escalation Detection
+Simulated privileged access and detected Event ID 4672 in Splunk.
+- Identified admin-level activity
+- Built detection queries
+- Created alert for privileged logins
 
 ### 🔹 Process Monitoring
 
