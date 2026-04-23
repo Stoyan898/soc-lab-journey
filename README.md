@@ -142,4 +142,56 @@ I am passionate about cybersecurity and continuously learning to become a SOC An
 * Map detections to MITRE ATT&CK framework
 * Build dashboards for visualization
 
+* ---
+
+## 🔄 Latest Progress: Lateral Movement Detection (SMB)
+
+### 🧪 What I Did
+
+- Created a shared folder on Windows using SMB
+- Connected to it from Ubuntu using `smbclient`
+- Generated authentication logs (Event ID 4624 & 4625)
+- Verified connectivity between VMs (ping test)
+- Built Splunk searches, dashboards, and alerts
+
+---
+
+### 🧠 Key Findings
+
+- Logon Type **3** indicates **network-based logins (SMB)**
+- Source IP (`Source_Network_Address`) shows where login originated
+- Multiple failed logins followed by success may indicate **brute force**
+- SMB activity is a common method for **lateral movement**
+
+---
+🚨 Alerts Created
+Brute Force Detection
+Privilege Escalation Detection
+High SMB Activity (Possible Lateral Movement)
+Successful Login After Multiple Failures
+🧩 MITRE ATT&CK Mapping
+T1021.002 – SMB/Windows Admin Shares
+T1110 – Brute Force
+T1078 – Valid Accounts
+📈 What I Learned
+How attackers move laterally using SMB
+How to identify suspicious login patterns in logs
+How to build detections using Splunk
+How to turn raw logs into dashboards and alerts
+⚠️ Issues I Faced
+Authentication failures (NT_STATUS_LOGON_FAILURE)
+Incorrect SMB username formatting
+Understanding domain vs local user syntax
+Troubleshooting connectivity between VMs
+✅ Outcome
+
+Successfully simulated lateral movement and built:
+
+Detection queries
+Dashboards
+Alerts
+
+This lab improved my understanding of real SOC monitoring scenarios.
+
+
 ---
