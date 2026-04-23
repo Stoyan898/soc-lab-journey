@@ -65,4 +65,37 @@ These commands simulate attacker behavior such as:
 
 They are used to generate logs that can be detected and analyzed in Splunk.
 
----
+
+## 🔼 Privilege Escalation Detection
+
+### 🧪 What I Did
+
+- Ran privileged command on Windows:
+```powershell
+whoami /priv
+
+index=* EventCode=4672
+| stats count by Account_Name
+
+📊 Splunk Detection
+index=* EventCode=4672
+| stats count by Account_Name
+🧠 What It Means
+Event 4672 indicates admin-level privileges
+Accounts like SYSTEM and soc101 were observed
+This is a strong indicator of privilege escalation or admin activity
+🚨 Alert Created
+Alert Name: Privilege Escalation Detection
+Condition: count > 0
+Trigger: Scheduled
+🧩 MITRE ATT&CK Mapping
+T1078 – Valid Accounts
+T1068 – Privilege Escalation
+
+✅ Outcome
+
+Successfully:
+
+Generated privilege escalation logs
+Detected Event ID 4672
+Created Splunk alert
