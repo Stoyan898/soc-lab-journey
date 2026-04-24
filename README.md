@@ -185,10 +185,18 @@ Detection queries
 Dashboards
 Alerts
 
+## 🔐 Persistence Detection Lab
+
+- Simulated scheduled task persistence using `schtasks`
+- Detected via Event ID 4688 in Splunk
+- Built alert for suspicious process execution
+- Identified limitation due to missing command-line logging
+
+➡️ [View Lab](./persistence/schtasks-detection/README.md)
+
 This lab improved my understanding of real SOC monitoring scenarios.
 
 ## 📈 Future Improvements
-* Add detections for PowerShell abuse and persistence
 * Phishing / email log analysis (basic)
 * Map detections to MITRE ATT&CK framework
 * Build dashboards for visualization
