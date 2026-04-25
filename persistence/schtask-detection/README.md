@@ -107,5 +107,27 @@ Detection was adjusted to:
 - Focus on process execution (4688)
 - Use Event ID 4698 for reliable persistence detection
 
+- ## 🧪 Attack Simulation
+
+![Task Creation](./screenshots/01_task_creation.png)
+
+---
+
+## 🔍 Detection – Process Execution (Event ID 4688)
+
+![4688 Detection](./screenshots/02_4688_process_detection.png)
+
+---
+
+## 🔬 Event Analysis
+
+![4688 Details](./screenshots/03_4688_event_details.png)
+
+---
+
+## 🔐 Detection – Persistence (Event ID 4698)
+
+![4698 Detection](./screenshots/04_4698_task_creation.png)
+
 ### Key Learning:
 Log data can be incomplete – detection must adapt.
