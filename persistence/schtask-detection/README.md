@@ -82,8 +82,30 @@ index=* EventCode=4688 Process_Command_Line="schtasks"
 
 ---
 
-## 🚀 Next Improvements
+## 🔍 Detection – Process Execution (Event ID 4688)
 
-- Enable command-line logging
-- Detect suspicious task names
-- Monitor Event ID 4698 (task creation)
+Splunk query used to detect execution of schtasks.exe:
+index=* EventCode=4688 "schtasks.exe"
+| table _time Account_Name New_Process_Name
+This confirms that the scheduled task tool was executed.
+
+## 🔐 Detection – Scheduled Task Creation (Event ID 4698)
+
+Splunk query used to detect persistence:
+index=* EventCode=4698
+| table _time Account_Name Task_Name
+This confirms that a scheduled task was created on the system.
+## ⚠️ Challenge – Missing Command Line Data
+
+Although command-line logging was enabled:
+
+- `Process Command Line` was not consistently populated in Event ID 4688
+- Some events contained the field, others did not
+
+### Solution:
+Detection was adjusted to:
+- Focus on process execution (4688)
+- Use Event ID 4698 for reliable persistence detection
+
+### Key Learning:
+Log data can be incomplete – detection must adapt.
