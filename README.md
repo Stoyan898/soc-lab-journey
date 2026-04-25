@@ -192,9 +192,33 @@ Alerts
 - Built alert for suspicious process execution
 - Identified limitation due to missing command-line logging
 
-➡️ [View Lab](./persistence/schtasks-detection/README.md)
-
 This lab improved my understanding of real SOC monitoring scenarios.
+
+## 🔐 Persistence Detection – Scheduled Tasks (schtasks)
+
+**Objective:**
+Detect persistence techniques using Windows Scheduled Tasks (`schtasks.exe`) in Splunk.
+
+**What I did:**
+
+* Simulated attacker behavior by creating scheduled tasks
+* Monitored **process creation (Event ID 4688)**
+* Detected **task creation (Event ID 4698)**
+* Investigated logs including:
+
+  * `New_Process_Name`
+  * `Process_Command_Line`
+  * `Task_Name`
+
+**Key Skills:**
+
+* Windows Event Log analysis
+* Splunk SPL queries
+* Detection engineering
+* Threat hunting basics
+
+📁 **Full Lab:**
+➡️ [View Lab](./persistence/schtasks-detection/README.md)
 
 ## 📈 Future Improvements
 * Phishing / email log analysis (basic)
