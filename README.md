@@ -1,9 +1,14 @@
-## 🛡️ SOC Home Lab Journey – Splunk SIEM
+# 🛡️ SOC Home Lab Journey – Splunk SIEM
 
-## 📌 Overview
+🚀 Aspiring SOC Analyst building hands-on detection skills using real-world attack simulations and Splunk SIEM.
 
-This project demonstrates a hands-on SOC (Security Operations Center) lab built using Splunk SIEM.
-It focuses on detecting real-world attack techniques through log analysis, detection engineering, and alerting.
+🔍 Focus areas:
+
+* Threat detection & log analysis
+* Detection engineering (Splunk SPL)
+* MITRE ATT&CK mapping
+* Attack simulation & validation
+
 
 ---
 
@@ -23,15 +28,15 @@ It focuses on detecting real-world attack techniques through log analysis, detec
 * Ubuntu Server → Hosts Splunk Enterprise
 
 ---
-
 ## 🧪 SOC Lab Projects
 
-| Lab                                                                | Description                                            |
-| ------------------------------------------------------------------ | ------------------------------------------------------ |
-| [Brute Force Detection](#)                                         | Detect multiple failed login attempts (Event ID 4625)  |
-| [Privilege Escalation Detection](#)                                | Detect admin privilege assignment (Event ID 4672)      |
-| [Lateral Movement (SMB)](#)                                        | Detect network logins and SMB activity                 |
-| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Detect persistence via schtasks (Event ID 4688 & 4698) |
+| Lab                                                                | Skills Demonstrated                           |
+| ------------------------------------------------------------------ | --------------------------------------------- |
+| [Brute Force Detection](#)                                         | Log analysis, detection logic, alerting       |
+| [Privilege Escalation](#)                                          | Event correlation, admin activity detection   |
+| [Lateral Movement (SMB)](#)                                        | Network log analysis, authentication patterns |
+| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Process monitoring, persistence detection     |
+
 
 ---
 
@@ -151,13 +156,19 @@ Brute Force → Privilege Escalation
 * Advanced MITRE ATT&CK mapping
 * Enhanced dashboards
 
+## 🧠 Key Skills Developed
+
+- Investigating Windows Security logs (4625, 4672, 4688, 4698)
+- Writing Splunk SPL queries for detection use cases
+- Correlating multi-stage attacks (brute force → privilege escalation)
+- Building alerts based on real attack behavior
+- Troubleshooting log ingestion and visibility gaps-
+
 ---
 
 ## 🎯 Career Goal
 
-I am building hands-on SOC skills through real-world simulations and detection engineering.
-My goal is to become a SOC Analyst and contribute to security monitoring and incident detection.
+Seeking a SOC Analyst role where I can apply hands-on detection engineering, log analysis, and threat investigation skills developed through this lab.
 
----
 
----
+  
