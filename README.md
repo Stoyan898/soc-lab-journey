@@ -1,12 +1,10 @@
-# 🛡️ SOC Home Lab Journey – Splunk SIEM
+## 🛡️ SOC Home Lab Journey – Splunk SIEM
 
 ## 📌 Overview
 
-- Overview of the lab
-- Architecture (diagram)
-- Use cases (brute force detection, failed logins)
-- Sample queries (Splunk SPL)
-- MITRE ATT&CK mapping
+This project demonstrates a hands-on SOC (Security Operations Center) lab built using Splunk SIEM.
+It focuses on detecting real-world attack techniques through log analysis, detection engineering, and alerting.
+
 ---
 
 ## 🧰 Technologies Used
@@ -14,15 +12,26 @@
 * Splunk Enterprise (SIEM)
 * Splunk Universal Forwarder
 * Windows Event Logs
-* Ubuntu (SIEM server)
+* Ubuntu (SIEM Server)
 
 ---
 
 ## 🏗️ Lab Architecture
 
 * Windows VM → Generates security logs
-* Splunk Universal Forwarder → Collects and forwards logs
-* Ubuntu Server → Hosts Splunk Enterprise (SIEM)
+* Splunk Universal Forwarder → Forwards logs
+* Ubuntu Server → Hosts Splunk Enterprise
+
+---
+
+## 🧪 SOC Lab Projects
+
+| Lab                                                                | Description                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------ |
+| [Brute Force Detection](#)                                         | Detect multiple failed login attempts (Event ID 4625)  |
+| [Privilege Escalation Detection](#)                                | Detect admin privilege assignment (Event ID 4672)      |
+| [Lateral Movement (SMB)](#)                                        | Detect network logins and SMB activity                 |
+| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Detect persistence via schtasks (Event ID 4688 & 4698) |
 
 ---
 
@@ -35,16 +44,13 @@
 
 ### 🔹 Privilege Escalation Detection
 
-🔹 Privilege Escalation Detection
-Simulated privileged access and detected Event ID 4672 in Splunk.
-- Identified admin-level activity
-- Built detection queries
-- Created alert for privileged logins
+* Event ID: 4672
+* Identifies admin-level logins
 
 ### 🔹 Process Monitoring
 
 * Event ID: 4688
-* Tracks process creation (e.g., PowerShell, cmd execution)
+* Tracks process creation (PowerShell, cmd, etc.)
 
 ---
 
@@ -52,179 +58,106 @@ Simulated privileged access and detected Event ID 4672 in Splunk.
 
 Alerts were configured using scheduled searches in Splunk:
 
-* Cron schedule: `*/5 * * * *` (every 5 minutes)
+* Schedule: Every 5 minutes (`*/5 * * * *`)
 * Time range: Last 5 minutes
 * Trigger condition: Results > 0
 
-This ensures near real-time detection of suspicious activity.
-
 ---
 
-## 🧪 Attack Simulation
-
-To validate detections, I simulated real-world attack behavior:
-
-* Created a new user
-* Added user to administrators group
-* Executed commands to generate logs
-
-This allowed me to verify that alerts were working correctly.
-
----
-
-## 🧠 What I Learned
-
-* How to configure log ingestion using Splunk Forwarder
-* How to analyze Windows Event Logs (Security logs)
-* How to build detection queries in Splunk
-* How to create and validate alerts
-* How to simulate attacker behavior in a lab environment
-* How to troubleshoot log ingestion issues
-
----
-
-## 🚀 My Motivation
-
-I am passionate about cybersecurity and continuously improving my skills through hands-on practice.
-
-I enjoy learning by building real-world labs and solving practical problems.
-I am highly motivated, eager to learn, and committed to growing into a SOC Analyst role.
-
----
 ## 🔐 Attack Chain Detection
 
-This project demonstrates a real SOC detection use case:
-
 ### Scenario
+
 Brute Force → Privilege Escalation
 
+### Key Skills Demonstrated
+
+* Event correlation (4625 → 4672)
+* SPL detection logic
+* Alert creation
+* SOC investigation workflow
+
+### MITRE ATT&CK Mapping
+
+* T1110 – Brute Force
+* T1078 – Valid Accounts
+* T1068 – Privilege Escalation
+
+---
+
+## 🔄 Latest Progress: Lateral Movement (SMB)
+
 ### What I Did
-- Analyzed Windows Security logs
-- Correlated Event ID 4625 and 4672
-- Built SPL detection logic
-- Applied thresholds and time window
-- Created dashboard and alert
 
-### Why I Did It
-I wanted to learn how SOC analysts detect multi-stage attacks instead of single events.
+* Simulated SMB authentication from Ubuntu to Windows
+* Generated Event IDs 4624 & 4625
+* Built detections and alerts
 
-### What I Learned
-- Correlation is key in detection
-- Attack chains provide better insights
-- Splunk SPL can be used for detection engineering
+### Key Finding
+
+* Logon Type 3 = Network login (SMB)
 
 ### MITRE ATT&CK
-- T1110 – Brute Force
-- T1078 – Valid Accounts
-- T1068 – Privilege Escalation
 
-  ## 🧠 SOC Workflow Demonstrated
+* T1021.002 – SMB
+* T1110 – Brute Force
+* T1078 – Valid Accounts
 
-1. Log ingestion from Windows machine
-2. Detection engineering using Splunk SPL
-3. Correlation of multiple events (4625 + 4672)
-4. Alert creation and monitoring
-5. Visualization using dashboards
-6. Validation through attack simulation
+---
+
+## 🔐 Persistence Detection – Scheduled Tasks
+
+### What I Did
+
+* Simulated scheduled task creation using `schtasks`
+* Detected execution via Event ID 4688
+* Detected task creation via Event ID 4698
+
+### Key Learning
+
+* Importance of command-line logging
+* Difference between process execution vs persistence detection
+
+📁 Full Lab:
+👉 [View Detailed Lab](./persistence/schtasks-detection/README.md)
+
+---
+
+## 🧠 SOC Workflow Demonstrated
+
+1. Log ingestion
+2. Detection engineering
+3. Event correlation
+4. Alert creation
+5. Visualization
+6. Attack simulation
+
+---
 
 ## 🔧 False Positive Reduction
 
-Improved detection accuracy by:
-- Filtering known safe users
-- Applying time-based correlation
-- Increasing thresholds
-📂 See full details: [false-positive-reduction.md](detections/false-positive-reduction.md)
+* Filtering known users
+* Applying thresholds
+* Time-based correlation
 
-### My Goal
-I am passionate about cybersecurity and continuously learning to become a SOC Analyst.
-
-## 🔄 Latest Progress: Lateral Movement Detection (SMB)
-
-### 🧪 What I Did
-
-- Created a shared folder on Windows using SMB
-- Connected to it from Ubuntu using `smbclient`
-- Generated authentication logs (Event ID 4624 & 4625)
-- Verified connectivity between VMs (ping test)
-- Built Splunk searches, dashboards, and alerts
+📂 Details:
+👉 [False Positive Reduction](detections/false-positive-reduction.md)
 
 ---
-
-### 🧠 Key Findings
-
-- Logon Type **3** indicates **network-based logins (SMB)**
-- Source IP (`Source_Network_Address`) shows where login originated
-- Multiple failed logins followed by success may indicate **brute force**
-- SMB activity is a common method for **lateral movement**
-
----
-🚨 Alerts Created
-Brute Force Detection
-Privilege Escalation Detection
-High SMB Activity (Possible Lateral Movement)
-Successful Login After Multiple Failures
-🧩 MITRE ATT&CK Mapping
-T1021.002 – SMB/Windows Admin Shares
-T1110 – Brute Force
-T1078 – Valid Accounts
-📈 What I Learned
-How attackers move laterally using SMB
-How to identify suspicious login patterns in logs
-How to build detections using Splunk
-How to turn raw logs into dashboards and alerts
-⚠️ Issues I Faced
-Authentication failures (NT_STATUS_LOGON_FAILURE)
-Incorrect SMB username formatting
-Understanding domain vs local user syntax
-Troubleshooting connectivity between VMs
-✅ Outcome
-
-Successfully simulated lateral movement and built:
-
-Detection queries
-Dashboards
-Alerts
-
-## 🔐 Persistence Detection Lab
-
-- Simulated scheduled task persistence using `schtasks`
-- Detected via Event ID 4688 in Splunk
-- Built alert for suspicious process execution
-- Identified limitation due to missing command-line logging
-
-This lab improved my understanding of real SOC monitoring scenarios.
-
-## 🔐 Persistence Detection – Scheduled Tasks (schtasks)
-
-**Objective:**
-Detect persistence techniques using Windows Scheduled Tasks (`schtasks.exe`) in Splunk.
-
-**What I did:**
-
-* Simulated attacker behavior by creating scheduled tasks
-* Monitored **process creation (Event ID 4688)**
-* Detected **task creation (Event ID 4698)**
-* Investigated logs including:
-
-  * `New_Process_Name`
-  * `Process_Command_Line`
-  * `Task_Name`
-
-**Key Skills:**
-
-* Windows Event Log analysis
-* Splunk SPL queries
-* Detection engineering
-* Threat hunting basics
-
-📁 **Full Lab:**
-➡️ [View Lab](./persistence/schtasks-detection/README.md)
 
 ## 📈 Future Improvements
-* Phishing / email log analysis (basic)
-* Map detections to MITRE ATT&CK framework
-* Build dashboards for visualization
 
+* Phishing / Email log analysis
+* Advanced MITRE ATT&CK mapping
+* Enhanced dashboards
 
+---
+
+## 🎯 Career Goal
+
+I am building hands-on SOC skills through real-world simulations and detection engineering.
+My goal is to become a SOC Analyst and contribute to security monitoring and incident detection.
+
+---
 
 ---
