@@ -41,14 +41,13 @@ The goal is to replicate how a SOC analyst detects, investigates, and responds t
 ---
 ## 🧪 SOC Lab Projects
 
-| Lab                                                                 | Skills Demonstrated                                      |
-|---------------------------------------------------------------------|----------------------------------------------------------|
-| [Brute Force Detection](./detections/brute-force/)                  | Log analysis, detection logic, alerting                  |
-| [Privilege Escalation](./detections/privilege-escalation/)          | Event correlation, admin activity detection              |
-| [Lateral Movement (SMB)](./lateral-movement/)                       | Network log analysis, authentication patterns            |
-| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/)  | Process monitoring, persistence detection                |
-| [Phishing / Email Analysis](./detections/phishing-email-analysis/)  | Email threat detection, SPL queries, correlation logic   |
-
+| Lab                                                                | Skills Demonstrated                                    |
+| ------------------------------------------------------------------ | ------------------------------------------------------ |
+| [Brute Force Detection](./detection/brute-force/)                  | Log analysis, detection logic, alerting                |
+| [Privilege Escalation](./detection/privilege-escalation/)          | Event correlation, admin activity detection            |
+| [Lateral Movement (SMB)](./lateral-movement/)                      | Network log analysis, authentication patterns          |
+| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Process monitoring, persistence detection              |
+| [Phishing / Email Analysis](./detection/phishing-email-analysis/)  | Email threat detection, SPL queries, correlation logic |
 
 ---
 
