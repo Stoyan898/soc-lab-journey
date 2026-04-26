@@ -2,13 +2,24 @@
 
 🚀 Aspiring SOC Analyst building hands-on detection skills using real-world attack simulations and Splunk SIEM.
 
-🔍 Focus areas:
+## 🎯 What This Project Demonstrates
 
+This project simulates real SOC analyst responsibilities:
+
+- Log ingestion and normalization (Splunk SIEM)
+- Detection engineering using SPL
+- Correlation of security events across attack stages
+- Alert creation and tuning
+- Investigation of suspicious activity
+- Mapping detections to MITRE ATT&CK
+
+The goal is to replicate how a SOC analyst detects, investigates, and responds to threats in a real environment.
+
+🔍 Focus areas:
 * Threat detection & log analysis
 * Detection engineering (Splunk SPL)
 * MITRE ATT&CK mapping
 * Attack simulation & validation
-
 
 ---
 
@@ -30,12 +41,13 @@
 ---
 ## 🧪 SOC Lab Projects
 
-| Lab                                                                | Skills Demonstrated                           |
-| ------------------------------------------------------------------ | --------------------------------------------- |
-| [Brute Force Detection](#)                                         | Log analysis, detection logic, alerting       |
-| [Privilege Escalation](#)                                          | Event correlation, admin activity detection   |
-| [Lateral Movement (SMB)](#)                                        | Network log analysis, authentication patterns |
-| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Process monitoring, persistence detection     |
+| Lab                                                                 | Skills Demonstrated                                      |
+|---------------------------------------------------------------------|----------------------------------------------------------|
+| [Brute Force Detection](./detections/brute-force/)                  | Log analysis, detection logic, alerting                  |
+| [Privilege Escalation](./detections/privilege-escalation/)          | Event correlation, admin activity detection              |
+| [Lateral Movement (SMB)](./lateral-movement/)                       | Network log analysis, authentication patterns            |
+| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/)  | Process monitoring, persistence detection                |
+| [Phishing / Email Analysis](./detections/phishing-email-analysis/)  | Email threat detection, SPL queries, correlation logic   |
 
 
 ---
@@ -45,7 +57,7 @@
 ### 🔹 Brute Force Detection
 
 * Event ID: 4625
-* Detects multiple failed login attempts
+* Detects potential brute-force attacks by identifying multiple failed login attempts within a short time window, which may indicate credential guessing activity.
 
 ### 🔹 Privilege Escalation Detection
 
@@ -176,7 +188,24 @@ T1071 – Web traffic
 - Building alerts based on real attack behavior
 - Troubleshooting log ingestion and visibility gaps-
 
----
+## 🧠 Analyst Mindset
+
+Throughout this lab, I focused not only on detection but also on understanding attacker behavior:
+
+- Identifying patterns instead of single events
+- Correlating logs across multiple sources
+- Investigating suspicious activity step-by-step
+- Reducing false positives
+
+This reflects how real SOC analysts operate in production environments.
+
+## 🚀 Key Highlights
+
+- Built multiple real-world detection use cases (Brute Force, Privilege Escalation, Persistence, Phishing)
+- Implemented correlation logic across attack stages
+- Created alerts simulating real SOC monitoring workflows
+- Simulated attacker techniques in a controlled lab environment
+- Applied MITRE ATT&CK mapping to all detections
 
 ## 🎯 Career Goal
 
