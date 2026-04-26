@@ -150,11 +150,23 @@ Brute Force → Privilege Escalation
 
 ---
 
-## 📈 Future Improvements
-
-* Phishing / Email log analysis
-* Advanced MITRE ATT&CK mapping
-* Enhanced dashboards
+📧 Phishing / Email Log Analysis
+🧪 What I Did
+Ingested simulated email logs into Splunk
+Extracted structured fields (sender, subject, URL, attachment)
+Built detection queries for phishing scenarios
+Created alert for suspicious email activity
+🔍 Detection Capabilities
+Typosquatting domain detection (micr0soft, paypa1)
+Suspicious URL detection (login pages, IP-based links)
+Malicious attachment detection (.exe)
+Social engineering detection (urgent/financial language)
+Correlation of multiple phishing indicators
+🧩 MITRE ATT&CK
+T1566 – Phishing
+T1566.001 – Attachment
+T1566.002 – Link
+T1071 – Web traffic
 
 ## 🧠 Key Skills Developed
 
