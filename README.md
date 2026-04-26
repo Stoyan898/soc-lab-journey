@@ -206,9 +206,48 @@ This reflects how real SOC analysts operate in production environments.
 - Simulated attacker techniques in a controlled lab environment
 - Applied MITRE ATT&CK mapping to all detections
 
+## 🚨 Incident Investigation – User Compromise
+
+### 🎯 Scenario
+
+Simulated a real-world attack where a user account was compromised after receiving a phishing email.
+
+### 🔗 Attack Chain
+
+Phishing → Credential Access → Execution → Persistence
+
+### 🔍 What I Did
+
+* Identified phishing email indicators from email logs
+* Investigated suspicious login activity (Event ID 4624)
+* Detected brute-force pattern (4625 → 4624)
+* Analyzed process execution (Event ID 4688)
+* Confirmed persistence via scheduled task (Event ID 4698)
+
+### 🧠 Skills Demonstrated
+
+* Incident investigation
+* Event correlation
+* Threat hunting
+* Detection engineering
+
+📁 **Full Lab:**
+👉 [View Incident Investigation Lab](./detection/incident-response-user-compromise/)
+
+## 🧠 Analyst Mindset
+
+Throughout this project, I focused on thinking like a SOC analyst:
+
+* Investigating alerts instead of just generating them
+* Correlating multiple events into attack chains
+* Identifying patterns of attacker behavior
+* Adapting detection logic based on log limitations
+
+This approach reflects real-world SOC operations where context and investigation are critical.
+
 ## 🎯 Career Goal
 
-Seeking a SOC Analyst role where I can apply hands-on detection engineering, log analysis, and threat investigation skills developed through this lab.
+I am actively developing hands-on SOC Analyst skills through real-world attack simulations and detection engineering.I am seeking an entry-level SOC Analyst role where I can contribute to threat detection, log analysis, and incident investigation while continuing to grow in cybersecurity.
 
 
   
