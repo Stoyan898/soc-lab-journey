@@ -48,7 +48,7 @@ The goal is to replicate how a SOC analyst detects, investigates, and responds t
 | [Lateral Movement (SMB)](lateral-movement/)                        | Network log analysis, authentication patterns          |
 | [Persistence – Scheduled Tasks](persistence/schtask-detection/) | Process monitoring, persistence detection              |
 | [Phishing / Email Analysis](./detection/phishing/)  | Email threat detection, SPL queries, correlation logic |
-
+| [Incident Investigation – User Compromise](./detection/incident-response-user-compromise/) | Incident response, attack chain analysis, threat hunting |
 ---
 
 ## 🔍 Detection Use Cases
