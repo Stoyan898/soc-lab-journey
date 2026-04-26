@@ -46,7 +46,7 @@ The goal is to replicate how a SOC analyst detects, investigates, and responds t
 | [Brute Force Detection](./detection/suspicious-login-after-bruteforce/)                     | Log analysis, detection logic, alerting                |
 | [Privilege Escalation](./detection/privilege-escalation/)          | Event correlation, admin activity detection            |
 | [Lateral Movement (SMB)](lateral-movement/)                        | Network log analysis, authentication patterns          |
-| [Persistence – Scheduled Tasks](./persistence/schtasks-detection/) | Process monitoring, persistence detection              |
+| [Persistence – Scheduled Tasks](persistence/schtasks-detection/) | Process monitoring, persistence detection              |
 | [Phishing / Email Analysis](./detection/phishing/)  | Email threat detection, SPL queries, correlation logic |
 
 ---
