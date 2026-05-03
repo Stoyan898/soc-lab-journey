@@ -243,6 +243,20 @@ Throughout this project, I focused on thinking like a SOC analyst:
 * Identifying patterns of attacker behavior
 * Adapting detection logic based on log limitations
 
+
+### 🔹 PowerShell Script Block Logging Detection
+
+* Detects PowerShell execution (Event ID 4104)
+* Extracts executed commands using regex
+* Demonstrates ingestion troubleshooting and parsing
+
+**MITRE ATT&CK:**
+
+* T1059.001 – PowerShell
+
+📁 [View Lab](labs/powershell-scriptblock-logging/)
+
+
 This approach reflects real-world SOC operations where context and investigation are critical.
 
 ## 🎯 Career Goal
