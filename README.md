@@ -31,7 +31,7 @@ Splunk (Ubuntu) → SIEM analysis
 | [Persistence – Scheduled Tasks](persistence/schtask-detection/) | Process monitoring, persistence detection              |
 | [Phishing / Email Analysis](./detection/phishing/)  | Email threat detection, SPL queries, correlation logic |
 | [Incident Investigation – User Compromise](./detection/incident-response-user-compromise/) | Incident response, attack chain analysis, threat hunting |
-| [Powershell-scriptblock-logging](powershell-scripblock-logging/) | Incident response, attack chain analysis, threat hunting |
+| [Powershell-scriptblock-logging](powershell-scriptblock-logging/) | Incident response, attack chain analysis, threat hunting |
 
 
 🧠 Key Skills
