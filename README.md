@@ -33,12 +33,13 @@ Splunk (Ubuntu) → SIEM analysis
 | [Incident Investigation – User Compromise](./detection/incident-response-user-compromise/) | Incident response, attack chain analysis, threat hunting |
 | [Powershell-scriptblock-logging](powershell-scripblock-logging/) | Incident response, attack chain analysis, threat hunting |
 
+
 🧠 Key Skills
 Splunk SPL
 Windows Event Analysis
 Detection Engineering
 Threat Hunting
 MITRE ATT&CK Mapping
-🎯 Career Goal
 
+🎯 Career Goal
 Seeking an entry-level SOC Analyst role focused on detection, investigation, and log analysis.
