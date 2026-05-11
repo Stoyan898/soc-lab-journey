@@ -86,22 +86,6 @@ index=* EventCode=4104
 
 ---
 
-## 📸 Screenshots
-
-### Splunk detection working
-
-![Detection](screenshots/05-final-detection-working.png)
-
-### Aggregated results
-
-![Stats](screenshots/06-stats-view.png)
-
-### Windows Event Viewer (4104)
-
-![Event Viewer](screenshots/07-event-viewer-4104.png)
-
----
-
 ## 🚧 Challenges Faced
 
 * Disk space issues blocking ingestion
