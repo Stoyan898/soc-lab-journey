@@ -26,7 +26,6 @@ Splunk (Ubuntu) → SIEM analysis
 | Lab                                                                | Skills Demonstrated                                    |
 | ------------------------------------------------------------------ | ------------------------------------------------------ |
 | [Brute Force Detection](./detection/suspicious-login-after-bruteforce/)                     | Log analysis, detection logic, alerting                |
-| [Privilege Escalation](./detection/privilege-escalation/)          | Event correlation, admin activity detection            |
 | [Lateral Movement (SMB)](lateral-movement/)                        | Network log analysis, authentication patterns          |
 | [Persistence – Scheduled Tasks](persistence/schtask-detection/) | Process monitoring, persistence detection              |
 | [Phishing / Email Analysis](./detection/phishing/)  | Email threat detection, SPL queries, correlation logic |
