@@ -32,7 +32,7 @@ Splunk (Ubuntu) → SIEM analysis
 | [Incident Investigation – User Compromise](./detection/incident-response-user-compromise/) | Incident response, attack chain analysis, threat hunting |
 | [Powershell-scriptblock-logging](powershell-scriptblock-logging/) | Incident response, attack chain analysis, threat hunting |
 | [PowerShell Suspicious Behavoir](./powershell-suspicious-behavoir/) | PowerShell detection, regex parsing, threat detection |
- [Splunk Web Attack Detection Lab](./Splunk-Web-Attack-Detection-Lab)
+ [Splunk Web Attack Detection Lab](./Splunk-Web-Attack-Detection-Lab) |Web attack detection, IIS log analysis, SPL querying, alert creation|
 
 🧠 Key Skills
 Splunk SPL
