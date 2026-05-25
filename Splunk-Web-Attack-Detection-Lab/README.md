@@ -221,21 +221,6 @@ This lab improved my understanding of:
 - Alert creation and tuning
 
 Most importantly, I learned that troubleshooting infrastructure and data ingestion is a major part of real SOC work before detections can even function properly.
-
----
-
-# Future Improvements
-
-Planned future improvements:
-
-- Integrate Sysmon logging
-- Add PowerShell detections
-- Build Splunk dashboards
-- Create MITRE ATT&CK mappings
-- Forward Windows Event Logs
-- Add brute-force detection
-- Recreate detections inside Microsoft Sentinel
-
 ---
 
 # MITRE ATT&CK Mapping
