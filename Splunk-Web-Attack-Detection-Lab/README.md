@@ -10,6 +10,7 @@ This project demonstrates a SOC-style web attack detection lab using:
 - IIS Log Monitoring
 - SQL Injection Detection
 - Command Injection Detection
+- Directory Traversal Detection
 - Alert Creation and Investigation
 
 The objective was to simulate common web attacks and detect them using Splunk SPL queries and alerts.
@@ -46,96 +47,130 @@ The objective was to simulate common web attacks and detect them using Splunk SP
 - SOC alert creation
 - Threat hunting
 - Web attack detection
+- IIS log analysis
 
 ---
 
-# Initial Setup
+# Splunk Deployment
 
-## Splunk Enterprise Installation
+Installed and configured Splunk Enterprise on Ubuntu Linux.
 
-Installed Splunk Enterprise on Ubuntu and verified services were running.
+Verified:
+- Splunk service operational
+- Web interface accessible
+- Search functionality working
 
 ![Splunk Running](screenshots/01-splunk-running.png)
 
 ---
 
-## Splunk Universal Forwarder Configuration
+# Challenges Faced During Setup
 
-Configured the Universal Forwarder on Windows to send logs to the Splunk server.
+## Log Collection and Forwarding Troubleshooting
 
-![Forwarder Configured](screenshots/02-forwarder-configured.png)
+One of the biggest challenges was understanding how IIS logs were being generated and forwarded into Splunk.
 
----
+Issues faced:
+- Initially no events appeared in Splunk
+- Incorrect paths and search filters
+- Understanding IIS log structure
+- Learning how Splunk indexes and searches logs
 
-# Challenges Faced
-
-## Connectivity Issues Between Forwarder and Splunk
-
-Initially the Universal Forwarder could not connect to Splunk on port 9997.
-
-Problems identified:
-- Incorrect forwarding IP configuration
-- Port communication issues
-- TCP connection failures
-
-Troubleshooting performed:
-- Verified VM networking
-- Tested connectivity using:
-  ```powershell
-  Test-NetConnection <Splunk-IP> -Port 9997
+Troubleshooting steps:
+- Verified IIS logging was enabled
+- Confirmed log file location:
+  ```text
+  C:\inetpub\logs\LogFiles\
   ```
-- Corrected forwarding server configuration
-- Restarted Splunk services
+- Tested multiple SPL queries
+- Used raw searches before refining detections
+- Learned how sourcetypes affect parsing
 
-This was one of the most exciting parts of the lab because it felt like solving a real SOC infrastructure issue.
-
-![Connectivity Troubleshooting](screenshots/03-connectivity-troubleshooting.png)
-
----
-
-# IIS Log Ingestion
-
-After fixing connectivity issues, IIS logs successfully appeared inside Splunk.
-
-![IIS Logs](screenshots/04-iis-logs-ingested.png)
+This part was genuinely exciting because it felt like performing real SOC troubleshooting and threat hunting work.
 
 ---
 
-# Simulated Attacks
+# IIS Log Investigation
 
-## SQL Injection Simulation
+After troubleshooting, IIS events successfully appeared inside Splunk.
 
-Generated SQL injection attempts against the IIS web server using:
+The logs contained:
+- IP addresses
+- URI requests
+- Query strings
+- HTTP methods
+- Status codes
+
+![IIS Logs Investigation](screenshots/commands-table-view.png)
+
+---
+
+# Attack Simulations
+
+## 1. SQL Injection Simulation
+
+Simulated SQL injection attempts against the IIS web server.
+
+Payload used:
 
 ```text
-http://localhost/index.php?id=1' OR '1'='1
+http://localhost/index.php?id=1'%20OR%20'1'%3D'1
 ```
 
-Splunk successfully detected the attack pattern inside IIS logs.
+Observed:
+- HTTP 404 responses
+- Suspicious query strings
+- Injection patterns inside IIS logs
 
-![SQL Injection Detection](screenshots/05-sql-injection-detected.png)
+![SQL Injection Simulation](screenshots/SQL injection simulation.png)
 
 ---
 
-## Command Injection Simulation
+## 2. Command Injection Simulation
 
-Generated command injection attempts using:
+Simulated command injection attempts using:
 
 ```text
 http://localhost/test?cmd=whoami
 ```
 
-Splunk detected suspicious command execution attempts.
+This generated suspicious requests inside IIS logs.
 
-![Command Injection Detection](screenshots/06-command-injection-detected.png)
+![Command Injection Simulation](screenshots/Command injection simulation.png)
 
 ---
 
-# Detection Engineering
+## 3. Directory Traversal Simulation
 
-Created a Splunk SPL query to identify suspicious web attack indicators.
+Simulated directory traversal attempts:
 
-## Detection Query
+```text
+http://localhost/windows/system32
+```
+
+This helped demonstrate detection of suspicious path access attempts.
+
+![Directory Traversal Simulation](screenshots/Directory Traversal simulation.png)
+
+---
+
+# Threat Hunting Queries
+
+## Searching for Command Injection Activity
+
+Used SPL searches to identify suspicious command execution attempts:
+
+```spl
+index=main sourcetype=iis "cmd=whoami"
+```
+
+![Command Injection Detection](screenshots/cmd=whami-command.png)
+
+---
+
+## SQL Injection Detection Query
+
+Built a detection query to identify common web attack indicators.
 
 ```spl
 index=main sourcetype=iis
@@ -143,48 +178,63 @@ index=main sourcetype=iis
 | table _time c_ip cs_method cs_uri_stem cs_uri_query sc_status
 ```
 
-![Detection Query](screenshots/07-detection-query.png)
+The query successfully identified:
+- SQL injection attempts
+- Command injection attempts
+- Directory traversal patterns
+
+![Detection Query](screenshots/sql-inj-query.png)
 
 ---
 
-# Alerting
+# Alert Engineering
 
-Created a high severity scheduled alert inside Splunk.
+Created a scheduled Splunk alert named:
+
+```text
+Possible Web Attack Detected
+```
 
 Alert configuration:
-- Trigger condition: Number of results > 0
-- Schedule: Every 5 minutes
 - Severity: High
+- Trigger condition: Results greater than 0
+- Scheduled execution
+- Digest mode enabled
 
 Successfully triggered alerts from simulated attacks.
 
-![Triggered Alert](screenshots/08-triggered-alert.png)
+![Triggered Alert](screenshots/alert-triggered.png)
 
 ---
 
 # Lessons Learned
 
-This project improved my understanding of:
+This lab improved my understanding of:
 
 - SIEM workflows
-- Log ingestion pipelines
+- Splunk SPL searching
+- Detection engineering
 - Web attack indicators
-- Threat detection engineering
-- Splunk troubleshooting
-- SOC investigation processes
+- IIS log analysis
+- SOC investigation methodology
+- Threat hunting
+- Alert creation and tuning
 
-I also learned the importance of troubleshooting infrastructure issues before detections can work properly.
+Most importantly, I learned that troubleshooting infrastructure and data ingestion is a major part of real SOC work before detections can even function properly.
 
 ---
 
 # Future Improvements
 
-- Add PowerShell attack detections
-- Integrate Sysmon
-- Create dashboards
-- Add MITRE ATT&CK mapping
+Planned future improvements:
+
+- Integrate Sysmon logging
+- Add PowerShell detections
+- Build Splunk dashboards
+- Create MITRE ATT&CK mappings
 - Forward Windows Event Logs
-- Recreate detections in Microsoft Sentinel
+- Add brute-force detection
+- Recreate detections inside Microsoft Sentinel
 
 ---
 
@@ -194,6 +244,7 @@ I also learned the importance of troubleshooting infrastructure issues before de
 |---|---|
 | T1190 | Exploit Public-Facing Application |
 | T1059 | Command and Scripting Interpreter |
+| T1006 | Path Traversal |
 | T1505 | Server Software Component |
 
 ---
